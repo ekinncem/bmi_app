@@ -17,8 +17,34 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
         backgroundColor: Color(0xFF0A0E21),
       ),
-      body: Row(
+      body: Column(
         children: <Widget>[
+          // Row with two containers at the top
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1D1E33),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1D1E33),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // One container in the middle
           Expanded(
             child: Container(
               margin: EdgeInsets.all(15),
@@ -28,30 +54,33 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
+          // Row with one container at the bottom
           Expanded(
-            child: Container(
-              margin: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10),
-              ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1D1E33),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1D1E33),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-      body: Row(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ],
-      )
     );
   }
 }
