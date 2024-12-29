@@ -37,6 +37,10 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
+        ],
+      ),
+      body: Row(
+        children: <Widget>[
           Expanded(
             child: Container(
               margin: EdgeInsets.all(15),
@@ -47,7 +51,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
         ],
-      ),
+      )
     );
   }
 }
