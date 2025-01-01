@@ -43,7 +43,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         Text('MALE', style: TextStyle(
                           fontSize: 18, 
@@ -55,24 +55,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: Colors.pinkAccent, 
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.center,
-                          child:
-                        Icon(FontAwesomeIcons.venus, 
-                        size: 80,
-                        ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text('FEMALE', style: TextStyle(
-                          fontSize: 18, 
-                          color: Colors.white),),
-                      ]
-                    ),
+                    cardChild: CardContainer(),
                     ),
                 ),
               ],
@@ -112,4 +95,5 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
 
