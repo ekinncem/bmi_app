@@ -30,32 +30,56 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(colour: Colors.blue, cardChild: Container(),),
+                  child: ReusableCard(
+                    colour: Colors.blue, 
+                    cardChild: Column(
+                      children: <Widget>[
+                        Icon(FontAwesomeIcons.mars, 
+                        size: 80,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text('MALE', style: TextStyle(
+                          fontSize: 18, 
+                          color: Colors.white),),
+                      ]
+                    ),
+                    ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: Container(),),
                 ),
               ],
             ),
           ),
           // One container in the middle
           Expanded(
-            child: ReusableCard(colour: activeCardColor),
+            child: ReusableCard(
+              colour: activeCardColor,
+                    cardChild: Container(),),
           ),
           // Row with one container at the bottom
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: Container(),),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: Container(),),
                 ),
               ],
             ),
           ),
-          Container(color: buttomContainerColor,
+          Container(
+            color: buttomContainerColor,
           margin: EdgeInsets.only(top: 10),
           width: double.infinity,
           height: bottomContainerHeight,
