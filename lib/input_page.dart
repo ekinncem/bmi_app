@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'reusables.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight= 80.0;
 const activeCardColor = Color(0xFF1D1E33);
@@ -29,7 +30,7 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(colour: Colors.blue),
+                  child: ReusableCard(colour: Colors.blue, cardChild: Container(),),
                 ),
                 Expanded(
                   child: ReusableCard(colour: activeCardColor),
