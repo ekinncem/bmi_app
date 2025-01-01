@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+//RESUABLE CARD WIDGET
+
 class ReusableCard extends StatelessWidget {
   const ReusableCard({
     super.key, 
@@ -24,8 +26,17 @@ class ReusableCard extends StatelessWidget {
   }
 }
 
-class CardContainer extends StatelessWidget {
-  const CardContainer({super.key});
+//ICON CONTENT WIDGET
+
+class IconContent extends StatelessWidget {
+  const IconContent({
+    super.key, 
+    required this.icon, 
+    required this.text
+  });
+
+  final IconData? icon;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +46,13 @@ class CardContainer extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Icon(
-            FontAwesomeIcons.venus, 
+            icon, 
             size: 80,
           ),
         ),
         SizedBox(height: 10),
         Text(
-          'FEMALE', 
+          text ?? '', 
           style: TextStyle(
             fontSize: 18, 
             color: Colors.white

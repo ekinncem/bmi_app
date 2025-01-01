@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const bottomContainerHeight= 80.0;
+const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1D1E33);
-const buttomContainerColor = Color(0xFFeB1555);
+const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
   @override
@@ -31,32 +31,21 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Colors.blue, 
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.center,
-                          child:
-                        Icon(FontAwesomeIcons.mars, 
-                        size: 80,
-                        ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text('MALE', style: TextStyle(
-                          fontSize: 18, 
-                          color: Colors.white),),
-                      ]
-                    ),
-                    ),
+                    colour: Colors.blue,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      text: 'MALE'
+                    )
+                  ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Colors.pinkAccent, 
-                    cardChild: CardContainer(),
+                    colour: Colors.pinkAccent,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      text: 'FEMALE'
                     ),
+                  ),
                 ),
               ],
             ),
@@ -65,7 +54,8 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               colour: activeCardColor,
-                    cardChild: Container(),),
+              cardChild: Container(),
+            ),
           ),
           // Row with one container at the bottom
           Expanded(
@@ -74,26 +64,26 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
-                    cardChild: Container(),),
+                    cardChild: Container(),
+                  ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
-                    cardChild: Container(),),
+                    cardChild: Container(),
+                  ),
                 ),
               ],
             ),
           ),
           Container(
-            color: buttomContainerColor,
-          margin: EdgeInsets.only(top: 10),
-          width: double.infinity,
-          height: bottomContainerHeight,
-          )
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          ),
         ],
       ),
     );
   }
 }
-
-
