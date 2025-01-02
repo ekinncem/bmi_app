@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1D1E33);
+const inactiveCardColour = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
@@ -30,9 +31,9 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      print('Male button pressed');
+                  child: GestureDetector(
+                    onTap: () {
+                      print('Male card was pressed');
                     },
                     child: ReusableCard(
                       colour: Colors.blue,
