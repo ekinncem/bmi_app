@@ -1,9 +1,11 @@
+import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
+const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
 
@@ -13,6 +15,21 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Color maleCardColour = inactiveCardColour;
+  Color femaleCardColour = inactiveCardColour;
+
+  //1 = male, 2 = female
+  void updateColour(int gender) {
+    //male card pressed
+    if (gender == 1) {
+      if (maleCardColour == inactiveCardColour) {
+        maleCardColour = activeCardColour;
+      }else{
+        maleCardColour = inactiveCardColour;
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +50,12 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('Male card was pressed');
+                      setState(() {
+                        updateColour(1);
+                      });
                     },
                     child: ReusableCard(
-                      colour: Colors.blue,
+                      colour: maleCardColour,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.mars,
                         text: 'MALE'
@@ -46,7 +65,7 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Colors.pinkAccent,
+                    colour: femaleCardColour,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.venus,
                       text: 'FEMALE'
