@@ -1,5 +1,3 @@
-import 'dart:ui_web';
-
 import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,8 +21,17 @@ class _InputPageState extends State<InputPage> {
     if(gender == 1){
       if(maleCardColour == inactiveCardColour){
         maleCardColour = activeCardColour;
+        femaleCardColour = inactiveCardColour;
       } else{
         maleCardColour = inactiveCardColour;
+      }
+    }
+    if(gender == 2){
+      if(femaleCardColour == inactiveCardColour){
+        femaleCardColour = activeCardColour;
+        maleCardColour = inactiveCardColour;
+      } else{
+        femaleCardColour = inactiveCardColour;
       }
     }
   }
@@ -63,11 +70,18 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: femaleCardColour,
-                    cardChild: IconContent(
-                      icon: FontAwesomeIcons.venus,
-                      text: 'FEMALE'
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColour(2);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: femaleCardColour,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        text: 'FEMALE'
+                      ),
                     ),
                   ),
                 ),
