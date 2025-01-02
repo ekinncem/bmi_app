@@ -19,17 +19,16 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColour = inactiveCardColour;
   Color femaleCardColour = inactiveCardColour;
 
-  //1 = male, 2 = female
   void updateColour(int gender) {
-    //male card pressed
-    if (gender == 1) {
-      if (maleCardColour == inactiveCardColour) {
+    if(gender == 1){
+      if(maleCardColour == inactiveCardColour){
         maleCardColour = activeCardColour;
-      }else{
+      } else{
         maleCardColour = inactiveCardColour;
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +77,7 @@ class _InputPageState extends State<InputPage> {
           // One container in the middle
           Expanded(
             child: ReusableCard(
-              colour: activeCardColor,
+              colour: activeCardColour,
               cardChild: Container(),
             ),
           ),
@@ -88,13 +87,13 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColor,
+                    colour: activeCardColour,
                     cardChild: Container(),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColor,
+                    colour: activeCardColour,
                     cardChild: Container(),
                   ),
                 ),
