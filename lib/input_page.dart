@@ -152,6 +152,11 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
               Container(
                 color: bottomContainerColor,
                 margin: EdgeInsets.only(top: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(30),
+                  ),
+                ),
                 width: double.infinity,
                 height: bottomContainerHeight,
               ),
