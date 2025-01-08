@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
@@ -46,14 +47,37 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'BMI CALCULATOR',
-          style: TextStyle(fontSize: 25, color: Colors.white),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 40,
+              width: 40,
+              child: Lottie.asset(
+                'assets/achivement.json',
+                fit: BoxFit.contain,
+              ),
+            ),
+            SizedBox(width: 10),
+            Text(
+              'BMI CALCULATOR',
+              style: TextStyle(fontSize: 25, color: Colors.white),
+            ),
+            SizedBox(width: 10),
+            SizedBox(
+              height: 40,
+              width: 40,
+              child: Lottie.asset(
+                'assets/achivement.json',
+                fit: BoxFit.contain,
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
         backgroundColor: Color(0xFF0A0E21),
       ),
-      body: Column(
+      body: Column( 
         children: <Widget>[
           // Row with two containers at the top
           Expanded(
