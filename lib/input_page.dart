@@ -18,15 +18,36 @@ class InputPage extends StatefulWidget {
   _InputPageState createState() => _InputPageState();
 }
 
-class _InputPageState extends State<InputPage> {
+class _InputPageState extends State<InputPage> with SingleTickerProviderStateMixin {
   Color maleCardColour = inactiveCardColour;
   Color femaleCardColour = inactiveCardColour;
-  bool _isAnimated = false;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _animateCyclist();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          _controller.forward();
+        }
+      });
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   void updateColour(Gender selectedGender) {
@@ -46,14 +67,6 @@ class _InputPageState extends State<InputPage> {
         femaleCardColour = inactiveCardColour;
       }
     }
-  }
-
-  void _animateCyclist() {
-    Future.delayed(Duration(milliseconds: 500), () {
-      setState(() {
-        _isAnimated = true;
-      });
-    });
   }
 
   @override
@@ -142,16 +155,20 @@ class _InputPageState extends State<InputPage> {
                 width: double.infinity,
                 height: bottomContainerHeight,
               ),
-              AnimatedPositioned(
-                duration: Duration(seconds: 5),
-                left: _isAnimated ? MediaQuery.of(context).size.width - 150 : 0,
-                top: 10,
-                curve: Curves.easeInOut,
-                child: SizedBox(
-                  width: 210,
-                  height: 70,
-                  child: Lottie.asset('assets/animations/cyclist.json'),
-                ),
+              AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  double screenWidth = MediaQuery.of(context).size.width;
+                  return Positioned(
+                    left: screenWidth * _animation.value - 25,
+                    top: 10,
+                    child: SizedBox(
+                      width: 100,
+                      height: 70,
+                      child: Lottie.asset('assets/animations/cyclist.json'),
+                    ),
+                  );
+                },
               ),
             ],
           ),
