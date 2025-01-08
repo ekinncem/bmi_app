@@ -92,10 +92,24 @@ class _InputPageState extends State<InputPage> {
                     },
                     child: ReusableCard(
                       colour: maleCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        text: 'MALE'
-                      )
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconContent(
+                            icon: FontAwesomeIcons.mars,
+                            text: 'MALE',
+                          ),
+                          SizedBox(height: 10),
+                          SizedBox(
+                            height: 70,
+                            width: 70,
+                            child: Lottie.asset(
+                              'assets/male.json',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
