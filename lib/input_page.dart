@@ -95,17 +95,27 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          IconContent(
-                            icon: FontAwesomeIcons.mars,
-                            text: 'MALE',
-                          ),
-                          SizedBox(height: 10),
                           SizedBox(
-                            height: 70,
-                            width: 70,
+                            height: 80,
+                            width: 150,
                             child: Lottie.asset(
                               'assets/male.json',
                               fit: BoxFit.contain,
+                              errorBuilder: (context, error, stackTrace) {
+                                print('Lottie Error: $error');
+                                return Icon(
+                                  FontAwesomeIcons.venus,
+                                  size: 80,
+                                  color: Colors.white,
+                                );
+                              },
+                            ),
+                          ),
+                          Text(
+                            'MALE',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -122,9 +132,34 @@ class _InputPageState extends State<InputPage> {
                     },
                     child: ReusableCard(
                       colour: femaleCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        text: 'FEMALE'
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 80,
+                            width: 150,
+                            child: Lottie.asset(
+                              'assets/female.json',
+                              fit: BoxFit.contain,
+                              errorBuilder: (context, error, stackTrace) {
+                                print('Lottie Error: $error');
+                                return Icon(
+                                  FontAwesomeIcons.venus,
+                                  size: 80,
+                                  color: Colors.white,
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Text(
+                            'FEMALE',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
