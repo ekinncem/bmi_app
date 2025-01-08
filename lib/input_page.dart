@@ -6,9 +6,9 @@ import 'package:lottie/lottie.dart';
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
-const bottomContainerColor = Color(0xFFEB1555);
+const bottomContainerColor = Color(0xFFFFC0CB); // More beautiful pink color
 
-enum Gender { 
+enum Gender {
   male,
   female
 }
@@ -150,13 +150,11 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Stack(
             children: [
               Container(
-                color: bottomContainerColor,
-                margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(30),
-                  ),
+                  color: bottomContainerColor,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 ),
+                margin: EdgeInsets.only(top: 10),
                 width: double.infinity,
                 height: bottomContainerHeight,
               ),
@@ -166,10 +164,10 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                   double screenWidth = MediaQuery.of(context).size.width;
                   return Positioned(
                     left: screenWidth * _animation.value - 25,
-                    top: 10,
+                    top: 2,
                     child: SizedBox(
-                      width: 100,
-                      height: 70,
+                      width: 110,
+                      height: 110,
                       child: Lottie.asset('assets/animations/cyclist.json'),
                     ),
                   );
