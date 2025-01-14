@@ -5,6 +5,10 @@ import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
+const maleActiveCardColur = Color.fromARGB(255, 30, 37, 163);
+const maleInactiveCardColour = Color.fromARGB(255, 99, 99, 236);
+const femaleActiveCardColour = Color.fromARGB(255, 163, 30, 30);
+const femaleInactiveCardColour = Color.fromARGB(255, 204, 87, 87);
 const inactiveCardColour = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFFFC0CB); // More beautiful pink color
 
@@ -19,8 +23,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> with SingleTickerProviderStateMixin {
-  Color maleCardColour = inactiveCardColour;
-  Color femaleCardColour = inactiveCardColour;
+  Color maleCardColour = maleInactiveCardColour;
+  Color femaleCardColour = femaleInactiveCardColour;
   late AnimationController _controller;
   late Animation<double> _animation;
 
