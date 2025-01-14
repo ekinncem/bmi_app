@@ -1,3 +1,4 @@
+import 'package:bmi_app/input_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -63,3 +64,64 @@ class IconContent extends StatelessWidget {
   }
 }
 
+
+class _AgeCounterState extends State<AgeCounter> {
+  int age = 0;
+
+  void _incrementAge() {
+    setState(() {
+      age++;
+    });
+  }
+
+  void _decrementAge() {
+    setState(() {
+      if (age > 0) age--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'AGE',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          '$age',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: _decrementAge,
+              icon: const Icon(Icons.remove),
+              color: Colors.white,
+              iconSize: 36,
+            ),
+            const SizedBox(width: 20),
+            IconButton(
+              onPressed: _incrementAge,
+              icon: const Icon(Icons.add),
+              color: Colors.white,
+              iconSize: 36,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
