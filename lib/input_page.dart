@@ -5,10 +5,10 @@ import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
-const maleActiveCardColur = Color.fromARGB(255, 30, 37, 163);
-const maleInactiveCardColour = Color.fromARGB(255, 99, 99, 236);
-const femaleActiveCardColour = Color.fromARGB(255, 163, 30, 30);
-const femaleInactiveCardColour = Color.fromARGB(255, 204, 87, 87);
+const maleActiveCardColur = Color.fromARGB(255, 99, 99, 236);
+const maleInactiveCardColour = Color.fromARGB(255, 162, 164, 207);
+const femaleActiveCardColour = Color.fromARGB(255, 204, 87, 87);
+const femaleInactiveCardColour = Color.fromARGB(255, 165, 135, 135);
 const inactiveCardColour = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFFFC0CB); // More beautiful pink color
 
@@ -56,19 +56,19 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
 
   void updateColour(Gender selectedGender) {
     if (selectedGender == Gender.male) {
-      if (maleCardColour == inactiveCardColour) {
-        maleCardColour = activeCardColour;
-        femaleCardColour = inactiveCardColour;
+      if (maleCardColour == maleInactiveCardColour) {
+        maleCardColour = maleActiveCardColur;
+        femaleCardColour = femaleInactiveCardColour;
       } else {
-        maleCardColour = inactiveCardColour;
+        maleCardColour = maleInactiveCardColour;
       }
     }
     if (selectedGender == Gender.female) {
-      if (femaleCardColour == inactiveCardColour) {
-        femaleCardColour = activeCardColour;
-        maleCardColour = inactiveCardColour;
+      if (femaleCardColour == femaleInactiveCardColour) {
+        femaleCardColour = femaleActiveCardColour;
+        maleCardColour = maleInactiveCardColour;
       } else {
-        femaleCardColour = inactiveCardColour;
+        femaleCardColour = femaleInactiveCardColour;
       }
     }
   }
