@@ -54,6 +54,35 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
     super.dispose();
   }
 
+  int calculateAge(DateTime birthdate) {
+    DateTime currentDate = DateTime.now();
+    int age = currentDate.year - birthdate.year;
+    if (currentDate.month < birthdate.month || (currentDate.month == birthdate.month && currentDate.day < birthdate.day)) {
+      age--;
+    }
+    return age;
+  }
+
+  DateTime? _birthDate;
+  int? _age;
+
+  void _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _birthDate ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != _birthDate) {
+      setState((){
+        _birthDate = picked;
+        _age = calculateAge (picked);
+      }
+      );
+    }
+  }
+
+
   void updateColour(Gender selectedGender) {
     if (selectedGender == Gender.male) {
       if (maleCardColour == maleInactiveCardColour) {
@@ -73,6 +102,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
     }
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
