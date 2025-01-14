@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
-const maleActiveCardColur = Color.fromARGB(255, 99, 99, 236);
+const maleActiveCardColour = Color.fromARGB(255, 99, 99, 236);
 const maleInactiveCardColour = Color.fromARGB(255, 162, 164, 207);
 const femaleActiveCardColour = Color.fromARGB(255, 204, 87, 87);
 const femaleInactiveCardColour = Color.fromARGB(255, 165, 135, 135);
@@ -20,6 +20,72 @@ enum Gender {
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
+}
+
+class AgeCounter extends StatefulWidget {
+  @override
+  _AgeCounterState createState() => _AgeCounterState();
+}
+
+class _AgeCounterState extends State<AgeCounter> {
+  int age = 0;
+
+  void _incrementAge() {
+    setState(() {
+      age++;
+    });
+  }
+
+  void _decrementAge() {
+    setState(() {
+      if (age > 0) age--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'AGE',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          '$age',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: _decrementAge,
+              icon: const Icon(Icons.remove),
+              color: Colors.white,
+              iconSize: 36,
+            ),
+            const SizedBox(width: 20),
+            IconButton(
+              onPressed: _incrementAge,
+              icon: const Icon(Icons.add),
+              color: Colors.white,
+              iconSize: 36,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }
 
 class _InputPageState extends State<InputPage> with SingleTickerProviderStateMixin {
@@ -55,34 +121,35 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
   }
 
   void updateColour(Gender selectedGender) {
-    if (selectedGender == Gender.male) {
-      if (maleCardColour == maleInactiveCardColour) {
-        maleCardColour = maleActiveCardColur;
-        femaleCardColour = femaleInactiveCardColour;
-      } else {
-        maleCardColour = maleInactiveCardColour;
+    setState(() {
+      if (selectedGender == Gender.male) {
+        if (maleCardColour == maleInactiveCardColour) {
+          maleCardColour = maleActiveCardColour;
+          femaleCardColour = femaleInactiveCardColour;
+        } else {
+          maleCardColour = maleInactiveCardColour;
+        }
+      } else if (selectedGender == Gender.female) {
+        if (femaleCardColour == femaleInactiveCardColour) {
+          femaleCardColour = femaleActiveCardColour;
+          maleCardColour = maleInactiveCardColour;
+        } else {
+          femaleCardColour = femaleInactiveCardColour;
+        }
       }
-    }
-    if (selectedGender == Gender.female) {
-      if (femaleCardColour == femaleInactiveCardColour) {
-        femaleCardColour = femaleActiveCardColour;
-        maleCardColour = maleInactiveCardColour;
-      } else {
-        femaleCardColour = femaleInactiveCardColour;
-      }
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'BMI CALCULATOR',
           style: TextStyle(fontSize: 25, color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF0A0E21),
+        backgroundColor: const Color(0xFF0A0E21),
       ),
       body: Column(
         children: <Widget>[
@@ -101,8 +168,8 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                       colour: maleCardColour,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.mars,
-                        text: 'MALE'
-                      )
+                        text: 'MALE',
+                      ),
                     ),
                   ),
                 ),
@@ -117,7 +184,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                       colour: femaleCardColour,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.venus,
-                        text: 'FEMALE'
+                        text: 'FEMALE',
                       ),
                     ),
                   ),
@@ -145,7 +212,9 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: Container(),
+                    cardChild: Container(
+                      child: AgeCounter(),
+                    ),
                   ),
                 ),
               ],
@@ -154,11 +223,11 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Stack(
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: bottomContainerColor,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 ),
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 width: double.infinity,
                 height: bottomContainerHeight,
               ),
