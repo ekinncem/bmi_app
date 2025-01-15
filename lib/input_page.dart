@@ -146,7 +146,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
       appBar: AppBar(
         title: const Text(
           'BMI CALCULATOR',
-          style: TextStyle(fontSize: 25, color: Colors.white),
+          style: TextStyle(fontSize: 45, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFF0A0E21),
