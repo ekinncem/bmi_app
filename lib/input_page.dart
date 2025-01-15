@@ -60,7 +60,7 @@ class _AgeCounterState extends State<AgeCounter> {
           '$age',
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 48,
+            fontSize: 50,
             fontWeight: FontWeight.bold,
           ),
         ),
