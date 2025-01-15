@@ -145,7 +145,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'BMI CALCULATOR',
+          'BMI newew',
           style: TextStyle(fontSize: 25, color: Colors.white),
         ),
         centerTitle: true,
