@@ -74,7 +74,7 @@ class _AgeCounterState extends State<AgeCounter> {
               color: Colors.white,
               iconSize: 36,
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 7),
             IconButton(
               onPressed: _incrementAge,
               icon: const Icon(Icons.add),
