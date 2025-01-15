@@ -48,7 +48,7 @@ class _AgeCounterState extends State<AgeCounter> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          'AGE',
+          'males',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
