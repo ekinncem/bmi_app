@@ -22,7 +22,26 @@ class _HeightCounterState extends State<HeightCounter> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children:[]
+      children:[
+        const Text(
+          'AGE',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height:10),
+        Text(
+          '$height',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+        const SizedBox(height: 10),
+      ]
     )
   }
 
