@@ -209,15 +209,14 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                     cardChild: Container(),
                   ),
                 ),
-                Container(
-                decoration: const BoxDecoration(
-                  color: bottomContainerColor,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: Container(
+                      child: AgeCounter(),
+                    ),
+                  ),
                 ),
-                margin: const EdgeInsets.only(top: 10),
-                width: double.infinity,
-                height: bottomContainerHeight,
-              ),
               ],
             ),
           ),
