@@ -1,3 +1,4 @@
+import 'package:bmi_app/screens/clas..dart';
 import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -196,9 +197,12 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Expanded(
             child: ReusableCard(
               colour: activeCardColour,
-              cardChild: Container(),
+              cardChild: Container(
+                child: HeightCounter(),
+              ),
             ),
           ),
+          Stack()
           // Row with one container at the bottom
           Expanded(
             child: Row(
