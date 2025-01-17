@@ -202,7 +202,6 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
               ),
             ),
           ),
-          Stack()
           // Row with one container at the bottom
           Expanded(
             child: Row(
