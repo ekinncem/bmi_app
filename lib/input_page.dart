@@ -269,33 +269,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
               ),
             ),
           ),
-          Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: bottomContainerColor,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                ),
-                margin: const EdgeInsets.only(top: 10),
-                width: double.infinity,
-                height: bottomContainerHeight,
-              ),
-              AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  double screenWidth = MediaQuery.of(context).size.width;
-                  return Positioned(
-                    left: screenWidth * _animation.value - 25,
-                    top: 2,
-                    child: SizedBox(
-                      width: 110,
-                      height: 110,
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+          
           // Row with one container at the bottom
           Expanded(
             child: Row(
