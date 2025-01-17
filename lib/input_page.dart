@@ -73,14 +73,18 @@ class _HeightCounterState extends State<HeightCounter> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: _decrementAge,
-              icon: const Icon(Icons.remove),
-            ),
-            IconButton(
-              onPressed: _incrementHeight,
-              icon: const Icon(Icons.add),
-            ),
+            Slider(
+            value: height.toDouble(),
+            min: 120,
+            max: 240,
+            divisions: 240,
+            label: height.toString(),
+            onChanged: (double newValue) {
+              setState(() {
+                height = newValue.round();
+              });
+            },
+          ),
           ],
         ),
       ]
