@@ -28,6 +28,67 @@ class AgeCounter extends StatefulWidget {
   _AgeCounterState createState() => _AgeCounterState();
 }
 
+class HeightCounter extends StatefulWidget{
+  @override
+  _HeightCounterState createState() => _HeightCounterState();
+}
+
+class _HeightCounterState extends State<HeightCounter> {
+  int height = 120;
+
+  void _incrementHeight() {
+    setState(() {
+      height++;
+    });
+  }
+
+  void _decrementAge() {
+    setState((){
+      height--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:[
+        const Text(
+          'HEIGHT',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height:10),
+        Text(
+          '$height',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: _decrementAge,
+              icon: const Icon(Icons.remove),
+            ),
+            IconButton(
+              onPressed: _incrementHeight,
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
+      ]
+    );
+  }
+}
+
 class _AgeCounterState extends State<AgeCounter> {
   int age = 0;
 
@@ -201,6 +262,33 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 child: HeightCounter(),
               ),
             ),
+          ),
+          Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  color: bottomContainerColor,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                ),
+                margin: const EdgeInsets.only(top: 10),
+                width: double.infinity,
+                height: bottomContainerHeight,
+              ),
+              AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  double screenWidth = MediaQuery.of(context).size.width;
+                  return Positioned(
+                    left: screenWidth * _animation.value - 25,
+                    top: 2,
+                    child: SizedBox(
+                      width: 110,
+                      height: 110,
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           // Row with one container at the bottom
           Expanded(
