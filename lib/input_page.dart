@@ -73,18 +73,21 @@ class _HeightCounterState extends State<HeightCounter> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Slider(
-            value: height.toDouble(),
-            min: 120,
-            max: 240,
-            divisions: 240,
-            label: height.toString(),
-            onChanged: (double newValue) {
-              setState(() {
-                height = newValue.round();
-              });
-            },
-          ),
+            SizedBox(
+              width: 300,
+              child: Slider(
+              value: height.toDouble(),
+              min: 120,
+              max: 240,
+              divisions: 240,
+              label: height.toString(),
+              onChanged: (double newValue) {
+                setState(() {
+                  height = newValue.round();
+                });
+              },
+                        ),
+            ),
           ],
         ),
       ]
