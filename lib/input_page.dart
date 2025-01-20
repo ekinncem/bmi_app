@@ -29,7 +29,7 @@ class AgeCounter extends StatefulWidget {
 
 class WeightCounter extends StatefulWidget {
   @override
-  _WeightCounterState createState() => _HeightCounterState();
+  _HeightCounterState createState() => _HeightCounterState();
 }
 
 class HeightCounter extends StatefulWidget{
@@ -37,18 +37,22 @@ class HeightCounter extends StatefulWidget{
   _HeightCounterState createState() => _HeightCounterState();
 }
 
-class _WeightCounterState extends State<WeightCounter> {
-  int height = 120;
 
-  void _incrementHeight() {
+//FUNCTIONS
+
+
+class _WeightCounterState extends State<WeightCounter> {
+  int weight = 120;
+
+  void _incrementWeight() {
     setState(() {
-      height++;
+      weight++;
     });
   }
 
-  void _decrementHeight() {
+  void _decrementWeight() {
     setState((){
-      height--;
+      weight--;
     });
   }
 
@@ -58,7 +62,7 @@ class _WeightCounterState extends State<WeightCounter> {
       mainAxisAlignment: MainAxisAlignment.center,
       children:[
         const Text(
-          'HEIGHT',
+          'WEIGHT',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
@@ -67,7 +71,7 @@ class _WeightCounterState extends State<WeightCounter> {
         ),
         const SizedBox(height:10),
         Text(
-          '$height',
+          '$weight',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 48,
@@ -81,14 +85,14 @@ class _WeightCounterState extends State<WeightCounter> {
             SizedBox(
               width: 300,
               child: Slider(
-              value: height.toDouble(),
+              value: weight.toDouble(),
               min: 120,
               max: 240,
               divisions: 240,
-              label: height.toString(),
+              label: weight.toString(),
               onChanged: (double newValue) {
                 setState(() {
-                  height = newValue.round();
+                  weight = newValue.round();
                 });
               },
                         ),
@@ -99,7 +103,6 @@ class _WeightCounterState extends State<WeightCounter> {
     );
   }
 }
-
 
 
 class _HeightCounterState extends State<HeightCounter> {
