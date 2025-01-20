@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// WEIGHT COUNTER AND ITS STATE
 
 class WeightCounter extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _WeightCounterState extends State<WeightCounter> {
   }
 
   void _decrementWeight() {
-    setState((){
+    setState(() {
       weight--;
     });
   }
@@ -26,7 +27,7 @@ class _WeightCounterState extends State<WeightCounter> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children:[
+      children: [
         const Text(
           'WEIGHT',
           style: TextStyle(
@@ -35,7 +36,7 @@ class _WeightCounterState extends State<WeightCounter> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height:10),
+        const SizedBox(height: 10),
         Text(
           '$weight',
           style: const TextStyle(
@@ -51,29 +52,29 @@ class _WeightCounterState extends State<WeightCounter> {
             SizedBox(
               width: 150,
               child: Slider(
-              value: weight.toDouble(),
-              min: 100,
-              max: 300,
-              divisions: 240,
-              label: weight.toString(),
-              activeColor: Colors.pink,
-              onChanged: (double newValue) {
-                setState(() {
-                  weight = newValue.round();
-                });
-              },
-                        ),
+                value: weight.toDouble(),
+                min: 100,
+                max: 300,
+                divisions: 240,
+                label: weight.toString(),
+                activeColor: Colors.pink,
+                onChanged: (double newValue) {
+                  setState(() {
+                    weight = newValue.round();
+                  });
+                },
+              ),
             ),
           ],
         ),
-      ]
+      ],
     );
   }
 }
 
-//HEIGHTCOUNTER AND ITS STATE
+// HEIGHT COUNTER AND ITS STATE
 
-class HeightCounter extends StatefulWidget{
+class HeightCounter extends StatefulWidget {
   @override
   _HeightCounterState createState() => _HeightCounterState();
 }
@@ -88,7 +89,7 @@ class _HeightCounterState extends State<HeightCounter> {
   }
 
   void _decrementHeight() {
-    setState((){
+    setState(() {
       height--;
     });
   }
@@ -97,7 +98,7 @@ class _HeightCounterState extends State<HeightCounter> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children:[
+      children: [
         const Text(
           'HEIGHT',
           style: TextStyle(
@@ -106,7 +107,7 @@ class _HeightCounterState extends State<HeightCounter> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height:10),
+        const SizedBox(height: 10),
         Text(
           '$height',
           style: const TextStyle(
@@ -122,26 +123,26 @@ class _HeightCounterState extends State<HeightCounter> {
             SizedBox(
               width: 300,
               child: Slider(
-              value: height.toDouble(),
-              min: 120,
-              max: 240,
-              divisions: 240,
-              label: height.toString(),
-              onChanged: (double newValue) {
-                setState(() {
-                  height = newValue.round();
-                });
-              },
-                        ),
+                value: height.toDouble(),
+                min: 120,
+                max: 240,
+                divisions: 240,
+                label: height.toString(),
+                onChanged: (double newValue) {
+                  setState(() {
+                    height = newValue.round();
+                  });
+                },
+              ),
             ),
           ],
         ),
-      ]
+      ],
     );
   }
 }
 
-//AGECOUNTER AND ITS STATE
+// AGE COUNTER AND ITS STATE
 
 class AgeCounter extends StatefulWidget {
   @override
