@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-//RESUABLE CARD WIDGET
+// REUSABLE CARD WIDGET
 
 class ReusableCard extends StatelessWidget {
   const ReusableCard({
     super.key, 
     required this.colour, 
-    required this.cardChild
+    required this.cardChild,
   });
 
   final Color colour;
@@ -16,7 +16,7 @@ class ReusableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: colour,
         borderRadius: BorderRadius.circular(10),
@@ -26,13 +26,13 @@ class ReusableCard extends StatelessWidget {
   }
 }
 
-//ICON CONTENT WIDGET
+// ICON CONTENT WIDGET
 
 class IconContent extends StatelessWidget {
   const IconContent({
     super.key, 
     required this.icon, 
-    required this.text
+    required this.text,
   });
 
   final IconData? icon;
@@ -50,12 +50,12 @@ class IconContent extends StatelessWidget {
             size: 80,
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           text ?? '', 
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18, 
-            color: Colors.white
+            color: Colors.white,
           ),
         ),
       ],
