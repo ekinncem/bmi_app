@@ -63,5 +63,77 @@ class IconContent extends StatelessWidget {
   }
 }
 
+//WEIGHTCOUNTER AND ITS STATE
+
+class WeightCounter extends StatefulWidget {
+  @override
+  _WeightCounterState createState() => _WeightCounterState();
+}
+
+
+class _WeightCounterState extends State<WeightCounter> {
+  int weight = 100;
+
+  void _incrementWeight() {
+    setState(() {
+      weight++;
+    });
+  }
+
+  void _decrementWeight() {
+    setState((){
+      weight--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:[
+        const Text(
+          'WEIGHT',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height:10),
+        Text(
+          '$weight',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 150,
+              child: Slider(
+              value: weight.toDouble(),
+              min: 100,
+              max: 300,
+              divisions: 240,
+              label: weight.toString(),
+              activeColor: Colors.pink,
+              onChanged: (double newValue) {
+                setState(() {
+                  weight = newValue.round();
+                });
+              },
+                        ),
+            ),
+          ],
+        ),
+      ]
+    );
+  }
+}
+
 
 
