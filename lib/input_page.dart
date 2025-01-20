@@ -29,7 +29,7 @@ class AgeCounter extends StatefulWidget {
 
 class WeightCounter extends StatefulWidget {
   @override
-  _WeightCounterState createState() => _AgeCounterState();
+  _WeightCounterState createState() => _HeightCounterState();
 }
 
 class HeightCounter extends StatefulWidget{
@@ -37,7 +37,68 @@ class HeightCounter extends StatefulWidget{
   _HeightCounterState createState() => _HeightCounterState();
 }
 
+class _WeightCounterState extends State<WeightCounter> {
+  int height = 120;
 
+  void _incrementHeight() {
+    setState(() {
+      height++;
+    });
+  }
+
+  void _decrementHeight() {
+    setState((){
+      height--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:[
+        const Text(
+          'HEIGHT',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height:10),
+        Text(
+          '$height',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 300,
+              child: Slider(
+              value: height.toDouble(),
+              min: 120,
+              max: 240,
+              divisions: 240,
+              label: height.toString(),
+              onChanged: (double newValue) {
+                setState(() {
+                  height = newValue.round();
+                });
+              },
+                        ),
+            ),
+          ],
+        ),
+      ]
+    );
+  }
+}
 
 
 
