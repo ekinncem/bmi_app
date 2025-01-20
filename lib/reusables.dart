@@ -136,7 +136,6 @@ class _WeightCounterState extends State<WeightCounter> {
 
 //HEIGHTCOUNTER AND ITS STATE
 
-
 class HeightCounter extends StatefulWidget{
   @override
   _HeightCounterState createState() => _HeightCounterState();
