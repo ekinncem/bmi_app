@@ -22,16 +22,6 @@ class InputPage extends StatefulWidget {
   _InputPageState createState() => _InputPageState();
 }
 
-class AgeCounter extends StatefulWidget {
-  @override
-  _AgeCounterState createState() => _AgeCounterState();
-}
-
-
-
-
-
-
 
 class _InputPageState extends State<InputPage> with SingleTickerProviderStateMixin {
   Color maleCardColour = maleInactiveCardColour;

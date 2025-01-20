@@ -211,6 +211,15 @@ class _HeightCounterState extends State<HeightCounter> {
 
 //AGECOUNTER AND ITS STATE
 
+class AgeCounter extends StatefulWidget {
+  @override
+  _AgeCounterState createState() => _AgeCounterState();
+}
+
+
+
+
+
 class _AgeCounterState extends State<AgeCounter> {
   int age = 0;
 
