@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'reusables.dart';
-import 'functions.dart';
+import 'states.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,7 +22,6 @@ class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
-
 
 class _InputPageState extends State<InputPage> with SingleTickerProviderStateMixin {
   Color maleCardColour = maleInactiveCardColour;
@@ -132,12 +131,9 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Expanded(
             child: ReusableCard(
               colour: activeCardColour,
-              cardChild: Container(
-                child: HeightCounter(),
-              ),
+              cardChild: HeightCounter(),
             ),
           ),
-          
           // Row with one container at the bottom
           Expanded(
             child: Row(
@@ -145,17 +141,13 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: Container(
-                      child: WeightCounter(),
-                    ),
+                    cardChild: WeightCounter(),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: Container(
-                      child: AgeCounter(),
-                    ),
+                    cardChild: AgeCounter(),
                   ),
                 ),
               ],
