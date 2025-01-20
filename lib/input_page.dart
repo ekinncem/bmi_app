@@ -350,7 +350,9 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: Container(),
+                    cardChild: Container(
+                      child: WeightCounter(),
+                    ),
                   ),
                 ),
                 Expanded(
