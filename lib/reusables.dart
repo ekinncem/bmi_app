@@ -70,7 +70,6 @@ class WeightCounter extends StatefulWidget {
   _WeightCounterState createState() => _WeightCounterState();
 }
 
-
 class _WeightCounterState extends State<WeightCounter> {
   int weight = 100;
 
@@ -135,7 +134,6 @@ class _WeightCounterState extends State<WeightCounter> {
   }
 }
 
-
 //HEIGHTCOUNTER AND ITS STATE
 
 
@@ -143,8 +141,6 @@ class HeightCounter extends StatefulWidget{
   @override
   _HeightCounterState createState() => _HeightCounterState();
 }
-
-
 
 class _HeightCounterState extends State<HeightCounter> {
   int height = 120;
@@ -215,10 +211,6 @@ class AgeCounter extends StatefulWidget {
   @override
   _AgeCounterState createState() => _AgeCounterState();
 }
-
-
-
-
 
 class _AgeCounterState extends State<AgeCounter> {
   int age = 0;
