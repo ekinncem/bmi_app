@@ -29,7 +29,7 @@ class AgeCounter extends StatefulWidget {
 
 class WeightCounter extends StatefulWidget {
   @override
-  _HeightCounterState createState() => _HeightCounterState();
+  _WeightCounterState createState() => _WeightCounterState();
 }
 
 class HeightCounter extends StatefulWidget{
@@ -42,7 +42,7 @@ class HeightCounter extends StatefulWidget{
 
 
 class _WeightCounterState extends State<WeightCounter> {
-  int weight = 120;
+  int weight = 100;
 
   void _incrementWeight() {
     setState(() {
@@ -83,11 +83,11 @@ class _WeightCounterState extends State<WeightCounter> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 300,
+              width: 150,
               child: Slider(
               value: weight.toDouble(),
-              min: 120,
-              max: 240,
+              min: 100,
+              max: 300,
               divisions: 240,
               label: weight.toString(),
               onChanged: (double newValue) {
