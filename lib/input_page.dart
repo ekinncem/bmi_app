@@ -186,7 +186,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                       context,
                       MaterialPageRoute(
                         builder: (context) => ResultPage(
-                          bmiResult: calculateBMI(), // Add your calculation method
+                          bmiResult: calculateBMI().toString(), // Add your calculation method
                           resultText: getResult(), // Add your result text method
                           interpretation: getInterpretation(), // Add your interpretation method
                         ),
