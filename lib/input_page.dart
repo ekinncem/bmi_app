@@ -164,9 +164,16 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 width: double.infinity,
                 height: bottomContainerHeight,
                 child: Center(
-                  child: Text(
+                  onclick: () {
+                    child: Text(
                     'CALCULATE YOUR BMI',
-                    style: TextStyle(color: Colors.black, fontFamily: 'Poppins', fontSize: 20, fontWeight: FontWeight.bold),),
+                    style: TextStyle(
+                      color: Colors.black, 
+                      fontFamily: 'Poppins', 
+                      fontSize: 20, 
+                      fontWeight: FontWeight.bold),
+                    ),
+                  }, 
                 ),
               ),
               AnimatedBuilder(
