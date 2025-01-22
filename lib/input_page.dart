@@ -30,6 +30,11 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
   late AnimationController _controller;
   late Animation<double> _animation;
 
+  // Add these variables to store the values
+  int height = 180;
+  int weight = 60;
+  int age = 20;
+
   @override
   void initState() {
     super.initState();
@@ -77,18 +82,31 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
   }
 
   double calculateBMI() {
-    // Add your BMI calculation logic here
-    return 22.0; // Example value
+    // BMI Formula: weight (kg) / (height (m))²
+    double heightInMeters = height / 100;
+    return weight / (heightInMeters * heightInMeters);
   }
 
   String getResult() {
-    // Add your logic to determine the result text based on BMI
-    return "Normal"; // Example value
+    double bmi = calculateBMI();
+    if (bmi >= 25) {
+      return 'Overweight';
+    } else if (bmi > 18.5) {
+      return 'Normal';
+    } else {
+      return 'Underweight';
+    }
   }
 
   String getInterpretation() {
-    // Add your logic to determine the interpretation based on BMI
-    return "You have a normal body weight. Good job!"; // Example value
+    double bmi = calculateBMI();
+    if (bmi >= 25) {
+      return 'You have a higher than normal body weight. Try to exercise more.';
+    } else if (bmi > 18.5) {
+      return 'You have a normal body weight. Good job!';
+    } else {
+      return 'You have a lower than normal body weight. You should eat more.';
+    }
   }
 
   @override
@@ -147,7 +165,14 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Expanded(
             child: ReusableCard(
               colour: activeCardColour,
-              cardChild: HeightCounter(),
+              cardChild: HeightCounter(
+                height: height,
+                onChanged: (newHeight) {
+                  setState(() {
+                    height = newHeight;
+                  });
+                },
+              ),
             ),
           ),
           // Row with one container at the bottom
@@ -157,13 +182,27 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: WeightCounter(),
+                    cardChild: WeightCounter(
+                      weight: weight,
+                      onChanged: (newWeight) {
+                        setState(() {
+                          weight = newWeight;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: AgeCounter(),
+                    cardChild: AgeCounter(
+                      age: age,
+                      onChanged: (newAge) {
+                        setState(() {
+                          age = newAge;
+                        });
+                      },
+                    ),
                   ),
                 ),
               ],
