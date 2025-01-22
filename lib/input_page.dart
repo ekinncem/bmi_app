@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'reusables.dart';
 import 'states.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'result_page.dart'; // Ensure this line is present to import ResultPage
 import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
@@ -73,6 +74,21 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
         }
       }
     });
+  }
+
+  double calculateBMI() {
+    // Add your BMI calculation logic here
+    return 22.0; // Example value
+  }
+
+  String getResult() {
+    // Add your logic to determine the result text based on BMI
+    return "Normal"; // Example value
+  }
+
+  String getInterpretation() {
+    // Add your logic to determine the interpretation based on BMI
+    return "You have a normal body weight. Good job!"; // Example value
   }
 
   @override
@@ -163,17 +179,29 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                 margin: const EdgeInsets.only(top: 10),
                 width: double.infinity,
                 height: bottomContainerHeight,
-                child: Center(
-                  onclick: () {
-                    child: Text(
+                child: TextButton(
+                  onPressed: () {
+                    // Calculate BMI here using height and weight values
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                          bmiResult: calculateBMI(), // Add your calculation method
+                          resultText: getResult(), // Add your result text method
+                          interpretation: getInterpretation(), // Add your interpretation method
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(
                     'CALCULATE YOUR BMI',
                     style: TextStyle(
-                      color: Colors.black, 
-                      fontFamily: 'Poppins', 
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                  }, 
+                  ),
                 ),
               ),
               AnimatedBuilder(
