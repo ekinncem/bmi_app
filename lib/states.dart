@@ -3,70 +3,39 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // WEIGHT COUNTER AND ITS STATE
 
-class WeightCounter extends StatefulWidget {
-  @override
-  _WeightCounterState createState() => _WeightCounterState();
-}
+class WeightCounter extends StatelessWidget {
+  final int weight;
+  final Function(int) onChanged;
 
-class _WeightCounterState extends State<WeightCounter> {
-  int weight = 100;
-
-  void _incrementWeight() {
-    setState(() {
-      weight++;
-    });
-  }
-
-  void _decrementWeight() {
-    setState(() {
-      weight--;
-    });
-  }
+  const WeightCounter({
+    required this.weight,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'WEIGHT',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
+      children: <Widget>[
+        Text('WEIGHT'),
         Text(
-          '$weight',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-          ),
+          weight.toString(),
+          style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
         ),
-        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 150,
-              child: Slider(
-                value: weight.toDouble(),
-                min: 100,
-                max: 300,
-                divisions: 240,
-                label: weight.toString(),
-                activeColor: Colors.pink,
-                onChanged: (double newValue) {
-                  setState(() {
-                    weight = newValue.round();
-                  });
-                },
-              ),
+          children: <Widget>[
+            RoundIconButton(
+              icon: FontAwesomeIcons.minus,
+              onPressed: () => onChanged(weight - 1),
+            ),
+            SizedBox(width: 10),
+            RoundIconButton(
+              icon: FontAwesomeIcons.plus,
+              onPressed: () => onChanged(weight + 1),
             ),
           ],
-        ),
+        )
       ],
     );
   }
@@ -74,68 +43,49 @@ class _WeightCounterState extends State<WeightCounter> {
 
 // HEIGHT COUNTER AND ITS STATE
 
-class HeightCounter extends StatefulWidget {
-  @override
-  _HeightCounterState createState() => _HeightCounterState();
-}
+class HeightCounter extends StatelessWidget {
+  final int height;
+  final Function(int) onChanged;
 
-class _HeightCounterState extends State<HeightCounter> {
-  int height = 120;
-
-  void _incrementHeight() {
-    setState(() {
-      height++;
-    });
-  }
-
-  void _decrementHeight() {
-    setState(() {
-      height--;
-    });
-  }
+  const HeightCounter({
+    required this.height,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'HEIGHT',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          '$height',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
+      children: <Widget>[
+        Text('HEIGHT'),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 300,
-              child: Slider(
-                value: height.toDouble(),
-                min: 120,
-                max: 240,
-                divisions: 240,
-                label: height.toString(),
-                onChanged: (double newValue) {
-                  setState(() {
-                    height = newValue.round();
-                  });
-                },
-              ),
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: <Widget>[
+            Text(
+              height.toString(),
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
             ),
+            Text('cm'),
           ],
+        ),
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            activeTrackColor: Colors.white,
+            thumbColor: Color(0xFFEB1555),
+            overlayColor: Color(0x29EB1555),
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+            overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+          ),
+          child: Slider(
+            value: height.toDouble(),
+            min: 120.0,
+            max: 220.0,
+            onChanged: (double newValue) {
+              onChanged(newValue.round());
+            },
+          ),
         ),
       ],
     );
@@ -144,67 +94,39 @@ class _HeightCounterState extends State<HeightCounter> {
 
 // AGE COUNTER AND ITS STATE
 
-class AgeCounter extends StatefulWidget {
-  @override
-  _AgeCounterState createState() => _AgeCounterState();
-}
+class AgeCounter extends StatelessWidget {
+  final int age;
+  final Function(int) onChanged;
 
-class _AgeCounterState extends State<AgeCounter> {
-  int age = 0;
-
-  void _incrementAge() {
-    setState(() {
-      age++;
-    });
-  }
-
-  void _decrementAge() {
-    setState(() {
-      if (age > 0) age--;
-    });
-  }
+  const AgeCounter({
+    required this.age,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'AGE',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
+      children: <Widget>[
+        Text('AGE'),
         Text(
-          '$age',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-          ),
+          age.toString(),
+          style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
         ),
-        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: _decrementAge,
-              icon: const Icon(Icons.remove),
-              color: Colors.white,
-              iconSize: 36,
+          children: <Widget>[
+            RoundIconButton(
+              icon: FontAwesomeIcons.minus,
+              onPressed: () => onChanged(age - 1),
             ),
-            const SizedBox(width: 20),
-            IconButton(
-              onPressed: _incrementAge,
-              icon: const Icon(Icons.add),
-              color: Colors.white,
-              iconSize: 36,
+            SizedBox(width: 10),
+            RoundIconButton(
+              icon: FontAwesomeIcons.plus,
+              onPressed: () => onChanged(age + 1),
             ),
           ],
-        ),
+        )
       ],
     );
   }
