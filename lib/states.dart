@@ -43,24 +43,41 @@ class WeightCounter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text('WEIGHT'),
-        Text(
-          weight.toString(),
-          style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
           children: <Widget>[
-            RoundIconButton(
-              icon: FontAwesomeIcons.minus,
-              onPressed: () => onChanged(weight - 1),
+            Text(
+              weight.toString(),
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
             ),
-            SizedBox(width: 10),
-            RoundIconButton(
-              icon: FontAwesomeIcons.plus,
-              onPressed: () => onChanged(weight + 1),
+            Text(
+              'kg',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ],
-        )
+        ),
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            activeTrackColor: Colors.white,
+            thumbColor: Color(0xFFEB1555),
+            overlayColor: Color(0x29EB1555),
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+            overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+          ),
+          child: Slider(
+            value: weight.toDouble(),
+            min: 30.0,
+            max: 150.0,
+            onChanged: (double newValue) {
+              onChanged(newValue.round());
+            },
+          ),
+        ),
       ],
     );
   }
