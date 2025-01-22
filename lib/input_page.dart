@@ -82,9 +82,10 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
   }
 
   double calculateBMI() {
-    // BMI Formula: weight (kg) / (height (m))²
     double heightInMeters = height / 100;
-    return weight / (heightInMeters * heightInMeters);
+    double bmi = weight / (heightInMeters * heightInMeters);
+    // Format to 3 decimal places
+    return double.parse(bmi.toStringAsFixed(3));
   }
 
   String getResult() {

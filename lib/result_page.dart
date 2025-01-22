@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'reusables.dart';
 
 class ResultPage extends StatelessWidget {
-  // You can add parameters here to receive BMI calculation results
   final String bmiResult;
   final String resultText;
   final String interpretation;
 
   ResultPage({
-    this.bmiResult = "25.0", // Default values for testing
-    this.resultText = "NORMAL",
-    this.interpretation = "You have a normal body weight. Good job!"
+    required this.bmiResult,  // Remove default value to ensure we always get the calculated value
+    required this.resultText,
+    required this.interpretation,
   });
 
   @override
