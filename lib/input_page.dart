@@ -156,9 +156,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
           Stack(
             children: [
               Container(
-                child: Center(
-                  child: Text('CALCULATE YOUR BMI'),
-                ),
+                Text('CALCULATE YOUR BMI'),
                 decoration: const BoxDecoration(
                   color: bottomContainerColor,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
