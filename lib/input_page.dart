@@ -7,12 +7,12 @@ import 'package:lottie/lottie.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
-const maleActiveCardColour = Color.fromARGB(255, 99, 99, 236);
-const maleInactiveCardColour = Color.fromARGB(255, 162, 164, 207);
-const femaleActiveCardColour = Color.fromARGB(255, 204, 87, 87);
-const femaleInactiveCardColour = Color.fromARGB(255, 165, 135, 135);
+const maleActiveCardColour = Color(0xFF304FFE);
+const maleInactiveCardColour = Color(0xFF1A237E);
+const femaleActiveCardColour = Color(0xFFE91E63);
+const femaleInactiveCardColour = Color(0xFF880E4F);
 const inactiveCardColour = Color(0xFF111328);
-const bottomContainerColor = Color(0xFFFFC0CB); // More beautiful pink color
+const bottomContainerColor = Color(0xFF00BCD4); // More beautiful pink color
 
 enum Gender {
   male,
@@ -116,152 +116,170 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
       appBar: AppBar(
         title: const Text(
           'BMI CALCULATOR',
-          style: TextStyle(fontSize: 25, color: Colors.white),
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            letterSpacing: 2,
+          ),
         ),
+        elevation: 0,
         centerTitle: true,
         backgroundColor: const Color(0xFF0A0E21),
       ),
-      body: Column(
-        children: <Widget>[
-          // Row with two containers at the top
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        updateColour(Gender.male);
-                      });
-                    },
-                    child: ReusableCard(
-                      colour: maleCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        text: 'MALE',
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        updateColour(Gender.female);
-                      });
-                    },
-                    child: ReusableCard(
-                      colour: femaleCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        text: 'FEMALE',
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFF0A0E21),
+              const Color(0xFF1D1E33),
+            ],
           ),
-          // One container in the middle
-          Expanded(
-            child: ReusableCard(
-              colour: activeCardColour,
-              cardChild: HeightCounter(
-                height: height,
-                onChanged: (newHeight) {
-                  setState(() {
-                    height = newHeight;
-                  });
-                },
+        ),
+        child: Column(
+          children: <Widget>[
+            // Row with two containers at the top
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColour(Gender.male);
+                        });
+                      },
+                      child: ReusableCard(
+                        colour: maleCardColour,
+                        cardChild: IconContent(
+                          icon: FontAwesomeIcons.mars,
+                          text: 'MALE',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColour(Gender.female);
+                        });
+                      },
+                      child: ReusableCard(
+                        colour: femaleCardColour,
+                        cardChild: IconContent(
+                          icon: FontAwesomeIcons.venus,
+                          text: 'FEMALE',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          // Row with one container at the bottom
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(
-                    colour: activeCardColour,
-                    cardChild: WeightCounter(
-                      weight: weight,
-                      onChanged: (newWeight) {
-                        setState(() {
-                          weight = newWeight;
-                        });
-                      },
-                    ),
-                  ),
+            // One container in the middle
+            Expanded(
+              child: ReusableCard(
+                colour: activeCardColour,
+                cardChild: HeightCounter(
+                  height: height,
+                  onChanged: (newHeight) {
+                    setState(() {
+                      height = newHeight;
+                    });
+                  },
                 ),
-                Expanded(
-                  child: ReusableCard(
-                    colour: activeCardColour,
-                    cardChild: AgeCounter(
-                      age: age,
-                      onChanged: (newAge) {
-                        setState(() {
-                          age = newAge;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-          Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: bottomContainerColor,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                ),
-                margin: const EdgeInsets.only(top: 10),
-                width: double.infinity,
-                height: bottomContainerHeight,
-                child: TextButton(
-                  onPressed: () {
-                    // Calculate BMI here using height and weight values
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ResultPage(
-                          bmiResult: calculateBMI().toString(), // Add your calculation method
-                          resultText: getResult(), // Add your result text method
-                          interpretation: getInterpretation(), // Add your interpretation method
+            // Row with one container at the bottom
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: WeightCounter(
+                        weight: weight,
+                        onChanged: (newWeight) {
+                          setState(() {
+                            weight = newWeight;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: AgeCounter(
+                        age: age,
+                        onChanged: (newAge) {
+                          setState(() {
+                            age = newAge;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    color: bottomContainerColor,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  ),
+                  margin: const EdgeInsets.only(top: 10),
+                  width: double.infinity,
+                  height: bottomContainerHeight,
+                  child: TextButton(
+                    onPressed: () {
+                      // Calculate BMI here using height and weight values
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultPage(
+                            bmiResult: calculateBMI().toString(), // Add your calculation method
+                            resultText: getResult(), // Add your result text method
+                            interpretation: getInterpretation(), // Add your interpretation method
+                          ),
                         ),
+                      );
+                    },
+                    child: Text(
+                      'CALCULATE YOUR BMI',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, child) {
+                    double screenWidth = MediaQuery.of(context).size.width;
+                    return Positioned(
+                      left: screenWidth * _animation.value - 25,
+                      top: 2,
+                      child: SizedBox(
+                        width: 110,
+                        height: 110,
+                        child: Lottie.asset('assets/animations/cyclist.json'),
                       ),
                     );
                   },
-                  child: Text(
-                    'CALCULATE YOUR BMI',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ),
-              ),
-              AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  double screenWidth = MediaQuery.of(context).size.width;
-                  return Positioned(
-                    left: screenWidth * _animation.value - 25,
-                    top: 2,
-                    child: SizedBox(
-                      width: 110,
-                      height: 110,
-                      child: Lottie.asset('assets/animations/cyclist.json'),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

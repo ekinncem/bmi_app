@@ -19,7 +19,14 @@ class ReusableCard extends StatelessWidget {
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: colour,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 8,
+            offset: Offset(0, 4),
+          ),
+        ],
       ),
       child: cardChild,
     );
@@ -48,14 +55,17 @@ class IconContent extends StatelessWidget {
           child: Icon(
             icon, 
             size: 80,
+            color: Colors.white,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Text(
           text ?? '', 
           style: const TextStyle(
             fontSize: 18, 
             color: Colors.white,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
           ),
         ),
       ],
