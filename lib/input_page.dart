@@ -238,16 +238,105 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                   height: bottomContainerHeight,
                   child: TextButton(
                     onPressed: () {
-                      // Calculate BMI here using height and weight values
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultPage(
-                            bmiResult: calculateBMI().toString(), // Add your calculation method
-                            resultText: getResult(), // Add your result text method
-                            interpretation: getInterpretation(), // Add your interpretation method
-                          ),
-                        ),
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            backgroundColor: Colors.transparent,
+                            child: Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Color(0xFF1D1E33),
+                                    Color(0xFF0A0E21),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 15,
+                                    offset: Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'Your BMI Result',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      letterSpacing: 1.5,
+                                    ),
+                                  ),
+                                  SizedBox(height: 30),
+                                  Text(
+                                    calculateBMI().toString(),
+                                    style: TextStyle(
+                                      fontSize: 60,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    getResult(),
+                                    style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                      color: _getResultColor(getResult()),
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    getInterpretation(),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white70,
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                  SizedBox(height: 30),
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 30,
+                                        vertical: 15,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0xFF00BCD4),
+                                            Color(0xFF00ACC1),
+                                          ],
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: Text(
+                                        'OK',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1.2,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                     child: Text(
@@ -283,51 +372,17 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
       ),
     );
   }
-}
 
-class ResultPage extends StatelessWidget {
-  final String bmiResult;
-  final String resultText;
-  final String interpretation;
-
-  const ResultPage({
-    Key? key,
-    required this.bmiResult,
-    required this.resultText,
-    required this.interpretation,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BMI RESULT'),
-        backgroundColor: const Color(0xFF0A0E21),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            resultText,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            bmiResult,
-            style: const TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            interpretation,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18),
-          ),
-        ],
-      ),
-    );
+  Color _getResultColor(String result) {
+    switch (result.toLowerCase()) {
+      case 'overweight':
+        return Colors.redAccent;
+      case 'normal':
+        return Color(0xFF24D876);
+      case 'underweight':
+        return Colors.orangeAccent;
+      default:
+        return Colors.white;
+    }
   }
 }
