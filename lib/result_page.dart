@@ -9,76 +9,75 @@ void showBMIResult(BuildContext context, {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return Dialog(
+      return AlertDialog(
         backgroundColor: const Color(0xFF0A0E21),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(20.0),
+        contentPadding: EdgeInsets.zero,
+        content: Container(
+          width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
                 'Your Result',
                 style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20.0),
-              ReusableCard(
-                colour: Color(0xFF1D1E33),
-                cardChild: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+              const SizedBox(height: 15.0),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                  color: Color(0xFF1D1E33),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Column(
                   children: <Widget>[
                     Text(
                       resultText,
                       style: TextStyle(
                         color: Color(0xFF24D876),
-                        fontSize: 22.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 10.0),
                     Text(
                       bmiResult,
                       style: TextStyle(
-                        fontSize: 80.0,
+                        fontSize: 50.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 10.0),
                     Text(
                       interpretation,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 22.0,
+                        fontSize: 18.0,
                         color: Colors.white,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20.0),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
+              const SizedBox(height: 15.0),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
                 child: Container(
-                  color: Color(0xFFFFC0CB),
-                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFC0CB),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
                   child: Text(
                     'CLOSE',
                     style: TextStyle(
-                      fontSize: 25.0,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),
