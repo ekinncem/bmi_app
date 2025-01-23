@@ -266,3 +266,50 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
     );
   }
 }
+
+class ResultPage extends StatelessWidget {
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  const ResultPage({
+    Key? key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BMI RESULT'),
+        backgroundColor: const Color(0xFF0A0E21),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            resultText,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            bmiResult,
+            style: const TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            interpretation,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 18),
+          ),
+        ],
+      ),
+    );
+  }
+}
