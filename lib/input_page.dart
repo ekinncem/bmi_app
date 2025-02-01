@@ -138,7 +138,7 @@ class _InputPageState extends State<InputPage> with SingleTickerProviderStateMix
                       colour: maleCardColour,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.mars,
-                        text: 'famelş',
+                        text: 'MALE',
                       ),
                     ),
                   ),
